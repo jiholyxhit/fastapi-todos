@@ -7,21 +7,24 @@ app = FastAPI()
 def health_check_handler():
     return {"ping": "pong"}
 
-todo_data = {
-    1: {
-        "id": 1, "contents": "laundry", "is_done": True
-    },
-    2: {
-        "id": 2, "contents": "meal prep", "is_done": False
-    },
-    3: {
-        "id": 3, "contents": "pre-class work", "is_done": False
-    },
-}
+# todo_data = {
+#     1: {
+#         "id": 1, "contents": "laundry", "is_done": True
+#     },
+#     2: {
+#         "id": 2, "contents": "meal prep", "is_done": False
+#     },
+#     3: {
+#         "id": 3, "contents": "pre-class work", "is_done": False
+#     },
+# }
 
 
 @app.get("/todos", status_code=200)
-def get_todos_handler(order: str | None = None):
+def get_todos_handler(
+        order: str | None = None,
+        session: Session = Depends(get_db),
+):
     res = list(todo_data.values())
     if order == "DESC":
         res = res[::-1]
