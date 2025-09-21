@@ -18,3 +18,10 @@ def create_todo(session: Session, todo:ToDo):
     session.refresh(instance=todo) #DB read again to update the id info in computer memory
     return todo
 
+def update_todo(session: Session, todo: ToDo):
+    session.add(instance = todo)
+    session.commit()
+    session.refresh(instance = todo)
+    return todo
+
+

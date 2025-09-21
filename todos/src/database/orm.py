@@ -22,3 +22,12 @@ class ToDo(Base):
             is_done = request.is_done
         )
 
+    def done(self) -> "ToDo":
+        self.is_done = True
+        return self
+
+    def undone(self) -> "ToDo":
+        self.is_done = True
+        return self
+
+

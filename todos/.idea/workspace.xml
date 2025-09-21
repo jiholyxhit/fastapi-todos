@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/src/database/orm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/orm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/repository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/schema/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/schema/request.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +71,7 @@
       <workItem from="1758054446756" duration="4643000" />
       <workItem from="1758063198594" duration="167000" />
       <workItem from="1758063367690" duration="9928000" />
-      <workItem from="1758147740966" duration="45384000" />
+      <workItem from="1758147740966" duration="47243000" />
     </task>
     <servers />
   </component>
