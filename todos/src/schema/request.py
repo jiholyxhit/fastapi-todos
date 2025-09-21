@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class CreateTodoRequest(BaseModel):
-    id: int
+class CreateToDoRequest(BaseModel):
+    # id: int
     contents: str
     is_done: bool

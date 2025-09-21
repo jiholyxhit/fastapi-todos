@@ -5,8 +5,8 @@ from sqlalchemy.orm import Session
 
 from database.connection import get_db
 from database.orm import ToDo
-from database.repository import get_todos, get_todo_by_todo_id
-from schema.request import CreateTodoRequest
+from database.repository import get_todos, get_todo_by_todo_id, create_todo
+from schema.request import CreateToDoRequest
 
 from schema.response import ToDoListSchema, ToDoSchema
 
@@ -58,8 +58,13 @@ def get_todo_handler(todo_id: int, session: Session  = Depends(get_db)):
 
 
 @app.post("/todos", status_code=201)
-def create_todo_handler(request: CreateTodoRequest):
-    # todo_data[request.id] = request.model_dump()
+def create_todo_handler(
+        request: CreateToDoRequest,
+        session: Session  = Depends(get_db),
+):
+    todo: ToDo = ToDo.create(request=request) #make an ORM model obj made with req schema
+    todo: ToDo = create_todo(session = session, todo = todo) #pass the ORM model obj to DB through repository function and then refresh to return back
+    return ToDoSchema.model_validate(todo)
     # return todo_data[request.id]
 
 
@@ -69,9 +74,9 @@ def update_todo_handler(
         is_done: bool = Body(..., embed=True)
 ):
     # todo = todo_data.get(todo_id)
-    if todo:
-        todo["is_done"] = is_done
-        return todo
+    # if todo:
+        # todo["is_done"] = is_done
+        # return todo
     raise HTTPException(status_code=404, detail="Todo Not Found")
 
 
