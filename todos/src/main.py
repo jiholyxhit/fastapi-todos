@@ -18,7 +18,7 @@ def health_check_handler():
     return {"ping": "pong"}
 
 # todo_data = {
-#     1: {
+#     1: {q
 #         "id": 1, "contents": "laundry", "is_done": True
 #     },
 #     2: {
@@ -40,7 +40,7 @@ def get_todos_handler(
     if order and order == "DESC":
         # return todos[::-1]
         return ToDoListSchema(
-            todos = [ToDoSchema.model_validate(todo) for todo in todos]
+            todos = [ToDoSchema.model_validate(todo) for todo in todos[::-1]]
         )
     # return todos
     return ToDoListSchema(
@@ -89,7 +89,7 @@ def update_todo_handler(
 @app.delete("/todos/{todo_id}", status_code=204)
 def delete_todo_handler(
         todo_id: int,
-        session: Session = Depends(get_db()),
+        session: Session = Depends(get_db),
 ):
     todo: ToDo | None = get_todo_by_todo_id(session = session, todo_id = todo_id)
     if not todo:
