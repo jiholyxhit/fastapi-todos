@@ -60,10 +60,12 @@ def test_create_todo(client, mocker):
     }
     response = client.post("/todos", json = body)
 
+    #test orm ToDo object from req
     assert create_spy.spy_return.id is None
     assert create_spy.spy_return.contents == "test"
     assert create_spy.spy_return.is_done is False
 
+    #test mocker response return_value
     assert response.status_code == 201
     assert response.json() == {"id": 1, "contents": "todo", "is_done": True}
 
@@ -74,6 +76,7 @@ def test_update_todo(client, mocker):
         "main.get_todo_by_todo_id",
         return_value=ToDo(id=1, contents="todo", is_done=True)
     )
+
 
     undone = mocker.patch.object(ToDo, "undone")
     mocker.patch(
@@ -93,6 +96,8 @@ def test_update_todo(client, mocker):
     response = client.get("/todos/1")
     assert response.status_code == 404
     assert response.json() == {"detail": "Todo Not Found"}
+# mocker.spy: real execution + tracking
+# mocker.patch.object: fake mocking replacement
 
 
 def test_delete_todo(client, mocker):
