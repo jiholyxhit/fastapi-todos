@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="067959f6-11c7-4b9b-87c2-1570aacf2b8b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/todo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/todo.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/todo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/test_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/test_main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,9 +183,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/main.py</url>
-          <line>4</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/tests/test_main.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
