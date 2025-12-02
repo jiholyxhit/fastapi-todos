@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="067959f6-11c7-4b9b-87c2-1570aacf2b8b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tests/test_todos_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/test_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/test_main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +56,8 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.pytest for tests.test_main.test_delete_todo">
-    <configuration name="pytest for tests.test_main.test_create_todo" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.pytest for tests.test_user_api.test_user_sign_up">
+    <configuration name="pytest for tests.test_todos_api.test_create_todo" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="todos" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -69,11 +70,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.test_main.test_create_todo&quot;" />
+      <option name="_new_target" value="&quot;tests.test_todos_api.test_create_todo&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for tests.test_main.test_delete_todo" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for tests.test_todos_api.test_delete_todo" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="todos" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -86,11 +87,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.test_main.test_delete_todo&quot;" />
+      <option name="_new_target" value="&quot;tests.test_todos_api.test_delete_todo&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for tests.test_main.test_get_todos" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for tests.test_todos_api.test_get_todos" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="todos" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -103,11 +104,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.test_main.test_get_todos&quot;" />
+      <option name="_new_target" value="&quot;tests.test_todos_api.test_get_todos&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for tests.test_main.test_health_check" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for tests.test_todos_api.test_update_todo" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="todos" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -120,11 +121,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.test_main.test_health_check&quot;" />
+      <option name="_new_target" value="&quot;tests.test_todos_api.test_update_todo&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for tests.test_main.test_update_todo" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for tests.test_user_api.test_user_sign_up" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="todos" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -137,17 +138,17 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.test_main.test_update_todo&quot;" />
+      <option name="_new_target" value="&quot;tests.test_user_api.test_user_sign_up&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for tests.test_main.test_delete_todo" />
-        <item itemvalue="Python tests.pytest for tests.test_main.test_update_todo" />
-        <item itemvalue="Python tests.pytest for tests.test_main.test_create_todo" />
-        <item itemvalue="Python tests.pytest for tests.test_main.test_get_todos" />
-        <item itemvalue="Python tests.pytest for tests.test_main.test_health_check" />
+        <item itemvalue="Python tests.pytest for tests.test_user_api.test_user_sign_up" />
+        <item itemvalue="Python tests.pytest for tests.test_todos_api.test_delete_todo" />
+        <item itemvalue="Python tests.pytest for tests.test_todos_api.test_update_todo" />
+        <item itemvalue="Python tests.pytest for tests.test_todos_api.test_create_todo" />
+        <item itemvalue="Python tests.pytest for tests.test_todos_api.test_get_todos" />
       </list>
     </recent_temporary>
   </component>
@@ -176,16 +177,5 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/tests/test_main.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
