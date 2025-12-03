@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 
 from database.connection import get_db
 
-from database.orm import ToDo
+from database.orm import ToDo, User
 
 class ToDoRepository:
     def __init__(self, session: Session = Depends(get_db)):
@@ -39,5 +39,18 @@ class ToDoRepository:
     def delete_todo(self, todo_id: int):
         self.session.execute(delete(ToDo).where(ToDo.id == todo_id))
         self.session.commit()
+
+
+class UserRepository:
+    def __init__(self, session: Session = Depends(get_db)):
+        self.session = session
+
+    def save_user(self, user: User) -> User:
+        self.session.add(instanc = user)
+        self.session.commit()
+        self.session.refresh(instance = user)
+        return user
+
+
 
 

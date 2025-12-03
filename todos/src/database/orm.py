@@ -40,5 +40,14 @@ class User(Base):
     password = Column(String(256), nullable = False)
     todos = relationship("ToDo", lazy = "joined")
 
+    @classmethod
+    def create(cls, username: str, hashed_password: str) -> "User": # User class frwrd referencing skirting (class name as a string)
+        return cls(
+            username = username,
+            password = hashed_password,
+
+        )
+
+
 
 
