@@ -9,7 +9,6 @@ from database.orm import User
 
 from database.repository import UserRepository
 
-from
 
 router = APIRouter(prefix = "/users")
 

@@ -46,7 +46,7 @@ class UserRepository:
         self.session = session
 
     def save_user(self, user: User) -> User:
-        self.session.add(instanc = user)
+        self.session.add(instance = user)
         self.session.commit()
         self.session.refresh(instance = user)
         return user

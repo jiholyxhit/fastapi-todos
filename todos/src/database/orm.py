@@ -45,8 +45,7 @@ class User(Base):
         return cls(
             username = username,
             password = hashed_password,
-
-        )
+        ) #created ORM obj always also have id, todos properties
 
 
 
