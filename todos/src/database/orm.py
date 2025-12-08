@@ -38,7 +38,7 @@ class User(Base):
     id = Column(Integer, primary_key = True, index = True)
     username = Column(String(256), nullable = False)
     password = Column(String(256), nullable = False)
-    todos = relationship("ToDo", lazy = "joined")
+    todos = relationship("ToDo", lazy = "joined") #todos eager loading
 
     @classmethod
     def create(cls, username: str, hashed_password: str) -> "User": # User class frwrd referencing skirting (class name as a string)
