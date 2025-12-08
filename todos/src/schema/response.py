@@ -23,3 +23,7 @@ class UserSchema(BaseModel):
     id: int
     username: str
 
+
+class JWTResponse(BaseModel):
+    access_token: str
+

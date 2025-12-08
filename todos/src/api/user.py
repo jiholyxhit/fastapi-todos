@@ -1,7 +1,7 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 
-from schema.request import SignUpRequest
-from schema.response import UserSchema
+from schema.request import SignUpRequest, LogInRequest
+from schema.response import UserSchema, JWTResponse
 
 from service.user import UserService
 
@@ -37,3 +37,34 @@ def user_sign_up_handler(
     #5. return user(id, username)
     #Response Schema
     return UserSchema.model_validate(user)
+
+
+@router.post("/log-in")
+def user_log_in_handler(
+        request: LogInRequest,
+        user_service: UserService = Depends(),
+        user_repo: UserRepository = Depends(),
+
+):
+    #1. request body(username, password)
+
+    #2. db read user
+    user: User | None = user_repo.get_user_by_username(
+        username=request.username
+    )
+    if not user:
+        raise HTTPException(status_code=404, detail="User Not Found")
+
+    #3. user.password, request.password -> bcrpyt.checkpw
+    verified: bool = user_service.verify_password(
+        plain_password = request.password,
+        hashed_password = user.password,
+    )
+    if not verified:
+        raise HTTPException(status_code=401, detail="Not Authorized")
+
+    #4. create jwt (User Service)
+    access_token: str = user_service.create_jwt(username = user.username)
+
+    #5. return jwt
+    return JWTResponse(access_token=access_token)
