@@ -1,6 +1,7 @@
-import bcrypt
+import bcrypt, random
 from datetime import datetime, timedelta
 from jose import jwt
+
 
 class UserService:
     encoding: str = "UTF-8"
@@ -36,3 +37,8 @@ class UserService:
         )
         #expiration check
         return payload["sub"] #username
+
+    @staticmethod
+    def create_otp():
+        return random.randint(1000, 9999)
+

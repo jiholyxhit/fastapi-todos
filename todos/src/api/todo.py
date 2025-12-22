@@ -19,7 +19,7 @@ router = APIRouter(prefix = "/todos")
 @router.get("", status_code=200)
 def get_todos_handler(
         access_token: str = Depends(get_access_token),
-        order: str | None = None,
+        order: str | None = None, #query string / default None
         user_service: UserService = Depends(),
         user_repo: UserRepository = Depends(),
 ) -> ToDoListSchema:

@@ -1,9 +1,15 @@
 from fastapi import APIRouter, Depends, HTTPException
 
-from schema.request import SignUpRequest, LogInRequest
+from schema.request import SignUpRequest, LogInRequest, CreateOTPRequest
 from schema.response import UserSchema, JWTResponse
 
+from security import get_access_token
+
+from cache import redis_client
+
 from service.user import UserService
+
+
 
 from database.orm import User
 
@@ -68,3 +74,19 @@ def user_log_in_handler(
 
     #5. return jwt
     return JWTResponse(access_token=access_token)
+
+
+@router.post("/email/otp")
+def create_otp_handler(
+        request: CreateOTPRequest,
+        _: str = Depends(get_access_token),
+        user_service: UserService = Depends(),
+):
+    #1. access_token
+    #2. request body(email) => api/user.py
+    #3. otp create(random 4 digit) => service/user.py
+    otp: int = user_service.create_otp()
+    #4. redis save otp(email, otp, expire=3min)
+    redis_client.set(request.email, otp, expire = 3 * 60)
+    #send otp to email
+    return {"otp": otp}
