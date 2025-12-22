@@ -7,7 +7,7 @@
     <list default="true" id="067959f6-11c7-4b9b-87c2-1570aacf2b8b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/schema/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/schema/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cache.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

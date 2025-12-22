@@ -1,4 +1,4 @@
-import bcrypt, random
+import bcrypt, random, time
 from datetime import datetime, timedelta
 from jose import jwt
 
@@ -42,3 +42,7 @@ class UserService:
     def create_otp():
         return random.randint(1000, 9999)
 
+    @staticmethod
+    def send_email_to_user(email: str) -> None:
+        time.sleep(10)
+        print(f"Sending email to {email}")

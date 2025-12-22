@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 
 from schema.request import SignUpRequest, LogInRequest, CreateOTPRequest, VerifyOTPRequest
 from schema.response import UserSchema, JWTResponse
@@ -84,10 +84,11 @@ def create_otp_handler(
 ):
     #1. access_token
     #2. request body(email) => api/user.py
+
     #3. otp create(random 4 digit) => service/user.py
     otp: int = user_service.create_otp()
     #4. redis save otp(email, otp, expire=3min)
-    redis_client.set(request.email, otp, expire = 3 * 60)
+    redis_client.set(request.email, otp, ex = 3 * 60)
     #send otp to email
     return {"otp": otp}
 
@@ -95,13 +96,14 @@ def create_otp_handler(
 @router.post("/email/otp/verify")
 def verify_otp_handler(
         request: VerifyOTPRequest,
+        background_tasks: BackgroundTasks,
         access_token: str = Depends(get_access_token),
         user_service: UserService = Depends(),
         user_repo: UserRepository = Depends(),
 ):
     #1. access_token
     #2. request body(email, otp)
-    otp: str | None = redis_client.get(request.email) #redis_client(decode_response=True)
+    otp: str | None = redis_client.get(request.email) #redis_client(decode_responses=True)
     if not otp:
         raise HTTPException(status_code=400, detail="Bad Request")
     #3. request.otp == redis.get(email)
@@ -113,7 +115,12 @@ def verify_otp_handler(
     if not user:
         raise HTTPException(status_code=404, detail="Bad Request")
 
-    # 4. db user(`email` field) save
+    #4. db user(`email` field) save
+    #5. send email to user (background task)
+    background_tasks.add_task(
+        user_service.send_email_to_user,
+        email="admin@fastapi.com",
+    )
 
     return UserSchema.model_validate(user)
 
