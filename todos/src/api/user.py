@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 
-from schema.request import SignUpRequest, LogInRequest, CreateOTPRequest
+from schema.request import SignUpRequest, LogInRequest, CreateOTPRequest, VerifyOTPRequest
 from schema.response import UserSchema, JWTResponse
 
 from security import get_access_token
@@ -79,7 +79,7 @@ def user_log_in_handler(
 @router.post("/email/otp")
 def create_otp_handler(
         request: CreateOTPRequest,
-        _: str = Depends(get_access_token),
+        _: str = Depends(get_access_token), #only verifying user access_token, but not using it in the method as an arg
         user_service: UserService = Depends(),
 ):
     #1. access_token
@@ -90,3 +90,31 @@ def create_otp_handler(
     redis_client.set(request.email, otp, expire = 3 * 60)
     #send otp to email
     return {"otp": otp}
+
+
+@router.post("/email/otp/verify")
+def verify_otp_handler(
+        request: VerifyOTPRequest,
+        access_token: str = Depends(get_access_token),
+        user_service: UserService = Depends(),
+        user_repo: UserRepository = Depends(),
+):
+    #1. access_token
+    #2. request body(email, otp)
+    otp: str | None = redis_client.get(request.email) #redis_client(decode_response=True)
+    if not otp:
+        raise HTTPException(status_code=400, detail="Bad Request")
+    #3. request.otp == redis.get(email)
+    if request.otp != int(otp):
+        raise HTTPException(status_code=400, detail="Bad Request")
+
+    username: str = user_service.decode_jwt(access_token = access_token)
+    user: User | None = user_repo.get_user_by_username(username)
+    if not user:
+        raise HTTPException(status_code=404, detail="Bad Request")
+
+    # 4. db user(`email` field) save
+
+    return UserSchema.model_validate(user)
+
+
