@@ -24,7 +24,7 @@ The system follows a **Service-Repository Pattern** to decouple business logic f
 
 ```mermaid
 graph TD
-    Client[Client (Web/Mobile)] -->|HTTP/WebSocket| LB[API Gateway / Load Balancer]
+    Client["Client (Web/Mobile)"] -->|HTTP/WebSocket| LB[API Gateway / Load Balancer]
     LB --> API[FastAPI Server]
     
     subgraph "Application Layer"
